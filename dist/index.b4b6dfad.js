@@ -27327,7 +27327,7 @@ const MainView = ()=>{
                 Birth: "1946",
                 Death: null
             },
-            image: "../img/Hook",
+            image: "https://m.media-amazon.com/images/M/MV5BNjMxODllYTEtN2NmOS00NmE1LWFhMzUtOWRmZmQwZjgwOWM2XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_.jpg",
             Featured: false,
             Actors: [
                 "Robin Williams",
@@ -27355,7 +27355,7 @@ const MainView = ()=>{
                 Birth: "1946",
                 Death: null
             },
-            image: "./img/E.T.",
+            image: "https://myhotposters.com/cdn/shop/products/mHP0295_1024x1024.jpeg?v=1571444287",
             Featured: false,
             Actors: [
                 "Drew Barrymore",
@@ -27378,7 +27378,7 @@ const MainView = ()=>{
                 Birth: "1949",
                 Death: null
             },
-            image: "./img/ParentTrap",
+            image: "https://lumiere-a.akamaihd.net/v1/images/p_theparenttrap1998_19873_be8ce25c.jpeg",
             Featured: false,
             Actors: [
                 "Lindsay Lohan",
@@ -27423,7 +27423,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "Ehb466DjHBmlouap87MGzYPjqro=");
+_s(MainView, "lcgPiA3GZMEZ0wO90xqFti0ER1E=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27554,7 +27554,7 @@ const MovieView = ({ movie, onBackClick })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.Director
+                        children: movie.Director.Name
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 13,

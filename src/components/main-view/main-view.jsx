@@ -18,7 +18,7 @@ export const MainView = () => {
         Birth: "1946",
         Death: null
       },
-      image: "../img/Hook",
+      image: "https://m.media-amazon.com/images/M/MV5BNjMxODllYTEtN2NmOS00NmE1LWFhMzUtOWRmZmQwZjgwOWM2XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_.jpg",
       Featured: false,
       Actors: ["Robin Williams", "Dustin Hoffman", "Julia Roberts"]
     },
@@ -42,7 +42,7 @@ export const MainView = () => {
         Birth: "1946",
         Death: null
       },
-      image: "./img/E.T.",
+      image: "https://myhotposters.com/cdn/shop/products/mHP0295_1024x1024.jpeg?v=1571444287",
       Featured: false,
       Actors: ["Drew Barrymore", "Henry Thomas"]
     },
@@ -62,7 +62,7 @@ export const MainView = () => {
         Birth: "1949",
         Death: null
       },
-      image: "./img/ParentTrap",
+      image: "https://lumiere-a.akamaihd.net/v1/images/p_theparenttrap1998_19873_be8ce25c.jpeg",
       Featured: false,
       Actors: ["Lindsay Lohan", "Dennis Quaid", "NaTasha Richardson", "Elaine Hendrix"]
     }
