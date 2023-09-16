@@ -27315,7 +27315,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://git.heroku.com/myflix-retro.git/movies").then((response)=>response.json()).then((data)=>{
+        fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log("Movies from api: ", data);
         // const moviesFromApi = data.movies.map((movie) => {
         //   return {
