@@ -27316,16 +27316,16 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            console.log("Movies from api: ", data);
-        // const moviesFromApi = data.movies.map((movie) => {
-        //   return {
-        //     id: movie.key,
-        //     title: movie.Title,
-        //     image: movie.ImagePath,
-        //     description: movie.Description
-        //   };
-        //   });
-        //   setMovies(moviesFromApi);
+            // console.log("Movies from api: ", data);
+            const moviesFromApi = data.map((movie)=>{
+                return {
+                    _id: movie._id,
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    description: movie.Description
+                };
+            });
+            setMovies(moviesFromApi);
         });
     }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
