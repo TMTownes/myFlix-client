@@ -11,16 +11,16 @@ export const MainView = () => {
     fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
-      console.log("Movies from api: ", data);
-      // const moviesFromApi = data.movies.map((movie) => {
-      //   return {
-      //     id: movie.key,
-      //     title: movie.Title,
-      //     image: movie.ImagePath,
-      //     description: movie.Description
-      //   };
-    //   });
-    //   setMovies(moviesFromApi);
+      // console.log("Movies from api: ", data);
+      const moviesFromApi = data.map((movie) => {
+        return {
+          _id: movie._id,
+          title: movie.Title,
+          image: movie.ImagePath,
+          description: movie.Description
+        };
+      });
+      setMovies(moviesFromApi);
     });
   }, []);
 
