@@ -8,7 +8,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://git.heroku.com/myflix-retro.git/movies")
+    fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
       console.log("Movies from api: ", data);
