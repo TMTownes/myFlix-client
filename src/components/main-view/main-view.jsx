@@ -17,7 +17,8 @@ export const MainView = () => {
           _id: movie._id,
           Title: movie.Title,
           ImagePath: movie.ImagePath,
-          Description: movie.Description
+          // Description: movie.Description,
+          Director: movie.Director
         };
       });
       setMovies(moviesFromApi);
@@ -39,7 +40,7 @@ export const MainView = () => {
       {movies.map((movie) => {
         return (
           <MovieCard 
-          key={movie.id}
+          key={movie._id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
