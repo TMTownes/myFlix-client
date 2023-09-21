@@ -5,13 +5,10 @@ import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
 
-  if(!user) {
-    return <LoginView/>; 
-  }
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies")
@@ -30,6 +27,10 @@ export const MainView = () => {
       setMovies(moviesFromApi);
     });
   }, []);
+
+  if(!user) {
+    return <LoginView/>; 
+  } 
 
   if (selectedMovie) {
     return (
