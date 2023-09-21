@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const LoginView = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
     //Prevent full page reload
     event.preventDefault();
@@ -20,12 +22,19 @@ export const LoginView = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Username: 
-        <input type="text"/>
+        <input 
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          />
       </label>
       <br/>
       <label>
         Password: 
-        <input type="password"/>
+        <input 
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}/>
       </label>
       <button type="submit">Submit</button>
     </form>
