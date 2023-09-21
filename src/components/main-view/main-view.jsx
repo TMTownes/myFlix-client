@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [user, setUser] = useState(null);
+
+  if(!user) {
+    return <LoginView/>; 
+  }
 
   const [selectedMovie, setSelectedMovie] = useState(null);
 
