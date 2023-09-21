@@ -15,9 +15,9 @@ export const LoginView = () => {
       body: JSON.stringify(data)
     });
   };
-  
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Username: 
         <input type="text"/>
