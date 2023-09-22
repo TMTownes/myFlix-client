@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const LoginView = ({onLoggedIn}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     //Prevent full page reload
     event.preventDefault();
@@ -38,7 +39,7 @@ export const LoginView = ({onLoggedIn}) => {
       <label>
         Password: 
         <input 
-          type="password"
+          type="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}/>
       </label>
