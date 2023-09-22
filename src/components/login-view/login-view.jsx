@@ -33,6 +33,7 @@ export const LoginView = ({onLoggedIn}) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
           />
       </label>
       <br/>
@@ -41,7 +42,9 @@ export const LoginView = ({onLoggedIn}) => {
         <input 
           type="current-password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}/>
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          />
       </label>
       <button type="submit">Submit</button>
     </form>
