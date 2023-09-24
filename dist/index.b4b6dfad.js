@@ -28332,8 +28332,8 @@ const LoginView = ({ onLoggedIn })=>{
         //Prevent full page reload
         event.preventDefault();
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
         fetch("https://myflix-retro-af49f4e11172.herokuapp.com/login", {
             method: "POST",
