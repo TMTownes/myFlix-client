@@ -9,8 +9,8 @@ export const LoginView = ({onLoggedIn}) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password
+      Username: username,
+      Password: password
     };
 
     fetch("https://myflix-retro-af49f4e11172.herokuapp.com/login", {
@@ -33,6 +33,7 @@ export const LoginView = ({onLoggedIn}) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
           />
       </label>
       <br/>
@@ -41,7 +42,9 @@ export const LoginView = ({onLoggedIn}) => {
         <input 
           type="current-password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}/>
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          />
       </label>
       <button type="submit">Submit</button>
     </form>
