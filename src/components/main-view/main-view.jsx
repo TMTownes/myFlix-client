@@ -61,7 +61,8 @@ export const MainView = () => {
          />
         );
       })}
-    {/* <button onClick={() => {setUser(null); }}>Logout</button>  */}
+      <br/>
+    <button onClick={() => {setUser(null); }}>Logout</button> 
     </div> 
   );
 };
