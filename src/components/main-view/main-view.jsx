@@ -4,10 +4,13 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);  
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+
 
 
   useEffect(() => {
@@ -20,18 +23,8 @@ export const MainView = () => {
       headers: {Authorization: `Bearer ${token}`}
     })
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      const moviesFromApi = data.map((movie) => {
-        return {
-          _id: movie._id,
-          Title: movie.Title,
-          ImagePath: movie.ImagePath,
-          // Description: movie.Description,
-          Director: movie.Director
-        };
-      });
-      setMovies(moviesFromApi);
+    .then((movies) => {
+      setMovies(movies);
     });
   }, [token]);
 
