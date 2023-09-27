@@ -13,15 +13,23 @@ export const LoginView = ({onLoggedIn}) => {
       Password: password
     };
 
-    fetch("https://myflix-retro-af49f4e11172.herokuapp.com/login", {
+    fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/login?Username=${username}&Password=${password}`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data)
-    }).then((response) => {
-      if (response.ok) {
-        onLoggedIn(username);
-      }else {
-        alert("Login failed");
+    }).then((response) => response.json())
+    .then((data) => {
+      console.log("Login response: ", data);
+      if (data.user) {
+        onLoggedIn(data.user, data.token);
+      } else {
+        alert("No such user");
       }
+    })
+    .catch((e) => {
+      alert("Something went wrong");
     });
   };
 
