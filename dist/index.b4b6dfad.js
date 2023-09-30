@@ -41840,7 +41840,8 @@ const SignupView = ()=>{
                 lineNumber: 66,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                variant: "primary",
                 type: "submit",
                 children: "Sign Up"
             }, void 0, false, {
