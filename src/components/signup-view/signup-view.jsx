@@ -17,7 +17,7 @@ const [birthday, setBirthday] = useState("");
       Email: email,
       Birthday: birthday
     };
-    fetch("https://myflix-retro-af49f4e11172.herokuapp.com/users", {
+    fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users?Username=${username}&Password=${password}&Email=${email}&Birthday=${birthday}`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
