@@ -28,6 +28,9 @@ export const MainView = () => {
     .then((response) => response.json())
     .then((movies) => {
       setMovies(movies);
+    })
+    .catch((err) => {
+      console.error(err);
     });
   }, [token]);
 
@@ -93,7 +96,7 @@ export const MainView = () => {
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movies} />
+                        <MovieCard movie={movie} />
                       </Col>
                     ))}
                   </>

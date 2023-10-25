@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const MovieView = ({ movie }) => {
-  const { movieId } = useParams(movie);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-
+  const { movieId } = useParams();
+  const [selectedMovie, setSelectedMovie] = useState();
 
   useEffect(() => {
   const foundMovie = movie.find((movie) => movie._id === movieId);
@@ -21,21 +20,18 @@ export const MovieView = ({ movie }) => {
   return (
     <div>
       <div>
-        <img className="w-100" src={movie.ImagePath} />
+        <img className="w-100" src={selectedMovie?.ImagePath} />
       </div>
       <div>
         <span>Title: </span>
-        <span>{movie.Title}</span>
+        <span>{selectedMovie?.Title}</span>
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie.Director}</span>
+        <span>{selectedMovie?.Director.Name}</span>
       </div>
       <Link to={`/`}>
-      <button 
-      // onClick={onBackClick} 
-      className="back-button"
-      style={{cursor: "pointer"}}>
+      <button className="back-button" style={{cursor: "pointer"}}>
         Back
       </button>
       </Link>
