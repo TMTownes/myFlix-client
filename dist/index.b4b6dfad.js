@@ -47703,10 +47703,10 @@ const SignupView = ()=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                         type: "text",
+                        minLength: "3",
                         value: username,
                         onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3"
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
                         lineNumber: 40,
@@ -47729,7 +47729,7 @@ const SignupView = ()=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
+                        type: "current-password",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value),
                         required: true
@@ -47755,7 +47755,7 @@ const SignupView = ()=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                        type: "email",
+                        type: "current-email",
                         value: email,
                         onChange: (e)=>setEmail(e.target.value),
                         required: true
