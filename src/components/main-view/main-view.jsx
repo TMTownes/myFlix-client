@@ -99,11 +99,11 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <>
+                  <> 
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
                         <MovieCard movie={movie} />
