@@ -39,16 +39,16 @@ const [birthday, setBirthday] = useState("");
         <Form.Label>Username:</Form.Label>
         <Form.Control 
         type="text"
+        minLength="3"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
-        minLength="3"
         />
       </Form.Group>
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
         <input 
-        type="password"
+        type="current-password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
@@ -57,7 +57,7 @@ const [birthday, setBirthday] = useState("");
       <Form.Group controlId="formEmail">
         <Form.Label>Email:</Form.Label>
         <Form.Control
-        type="email"
+        type="current-email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
