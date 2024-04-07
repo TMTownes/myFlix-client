@@ -7,6 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -87,12 +88,34 @@ export const MainView = () => {
                   
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
+                  <Col sm={12} md={8} lg={6}>
                     <MovieView movie={movies} />
                   </Col>
                 )}
               </>
             }
+          />
+          <Route
+          path="/profile"
+          element={
+            <Row className="justify-content-center">
+              <Col
+              sm={12} md={9} lg={7}
+              >
+                {user ? (
+                  <><ProfileView
+                    token={token}
+                    user={user}
+                    movies={movies}
+                    onSubmit={(user) => setUser(user)} /><MovieCard
+                      isFavorite={user.FavoriteMovies.includes(movie.title)}
+                      movie={movie} /></>
+                  ): ( 
+                <Navigate to="/login" />)
+                }
+              </Col>
+            </Row>
+          }
           />
           <Route
             path="/"
@@ -105,8 +128,7 @@ export const MainView = () => {
                 ) : (
                   <> 
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
+                      <Col className="mb-4" key={movie._id} sm={6} md={4} lg={3}>
                       </Col>
                     ))}
                   </>
