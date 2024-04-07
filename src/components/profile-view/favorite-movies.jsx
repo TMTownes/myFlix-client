@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Row from "react-bootstrap/Row";
+import Row from "react-bootstrap";
 import Col from "react-bootstrap";
 
 import { Link } from "react-router-dom";
