@@ -13,7 +13,7 @@ export const FavoriteMovies = ({user, favoriteMovies}) => {
       <h3 className="title">Favorite Movies List!</h3>
       <Row>
         {favoriteMovies.map((movie) => (
-          <Col key={movie._id} md={6}>
+          <Col xs={12} md={6} lg={3} key={movie._id}>
             <Link to={`/movies/${movie._id}`} />
             <MovieCard
             key={movie._id}
