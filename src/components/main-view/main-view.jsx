@@ -27,14 +27,34 @@ export const MainView = () => {
     {
       headers: {Authorization: `Bearer ${token}`}
     })
-    .then((response) => response.json())
-    .then((movies) => {
-      setMovies(movies);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fectch movies");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (!data) {
+        throw new Error("No data received");
+      }
+      const moviesFromApi = data.map((movie) => {
+        return {
+          id: movie._id,
+          image: movie.ImagePath,
+          title: movie.Title,
+          genre: movie.Genre,
+          description: movie.Description,
+          director: movie.Director.Name
+        };
+      });
+      localStorage.setItem("movies", JSON.stringify(moviesFromApi));
+      setMovies(moviesFromApi);
     })
     .catch((err) => {
-      console.error(err);
+      console.error("Error fetching movies", err);
     });
   }, [token]);
+  console.log(movies);
 
   return (
     <BrowserRouter>
@@ -52,30 +72,48 @@ export const MainView = () => {
           <Route
             path="/users"
             element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignupView />
-                  </Col>  
-                )}
-              </>
+            <Col md={5}>
+              <SignupView />
+            </Col>
             }
           />
+          
           <Route
             path="/login"
             element={
               <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token);}}/>
-                  </Col>
-                )}
+              {user ? (
+                <Navigate to="/" />
+              ) : ( 
+              <Col md={5}>
+                <LoginView onLoggedIn={(user, token) => { 
+                  setUser(user); 
+                  setToken(token);
+                  }}
+                  />
+                </Col>
+              )}
               </>
             }
+           />
+           
+          <Route
+          path="/profile"
+          element={
+            <Row className="justify-content-center">
+              <Col sm={12} md={9} lg={7} >
+                {user ? (
+                  <><ProfileView
+                    token={token}
+                    user={user}
+                    movies={movies}
+                    onSubmit={(user) => setUser(user)} /></>
+                  ): ( 
+                <Navigate to="/login" />
+                )}
+              </Col>
+            </Row>
+          }
           />
           <Route 
             path="/movies/:movieId"
@@ -89,46 +127,28 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col sm={12} md={8} lg={6}>
-                    <MovieView movie={movies} />
+                    <MovieView movies={movies} />
                   </Col>
                 )}
               </>
             }
           />
           <Route
-          path="/profile"
-          element={
-            <Row className="justify-content-center">
-              <Col
-              sm={12} md={9} lg={7}
-              >
-                {user ? (
-                  <><ProfileView
-                    token={token}
-                    user={user}
-                    movies={movies}
-                    onSubmit={(user) => setUser(user)} /><MovieCard
-                      isFavorite={user.FavoriteMovies.includes(movie.title)}
-                      movie={movie} /></>
-                  ): ( 
-                <Navigate to="/login" />)
-                }
-              </Col>
-            </Row>
-          }
-          />
-          <Route
             path="/"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <> 
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie._id} sm={6} md={4} lg={3}>
+                      <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>
+                      <MovieCard
+                      isFavorite={user.FavoriteMovies.includes(movie.title)}
+                      movie={movie} 
+                     />
                       </Col>
                     ))}
                   </>
