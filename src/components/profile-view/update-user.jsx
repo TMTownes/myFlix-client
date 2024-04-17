@@ -1,7 +1,7 @@
 import React from "react";
-import Form from "react-bootstrap";
-import Button from "react-bootstrap";
-import Row from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import {Button} from "react-bootstrap";
+import Row from "react-bootstrap/Row";
 import PropTypes from "prop-types";
 
 export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {

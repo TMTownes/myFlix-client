@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Row from "react-bootstrap";
-import Col from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";

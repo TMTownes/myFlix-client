@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "react-bootstrap";
-import Col from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { Button, Card, Image} from "react-bootstrap";
 import { useState } from "react";
