@@ -15,6 +15,7 @@ img {
 }
 
 .title {
+  text-align: center;
   margin: 24px 0 16px;
 }
 
@@ -29,7 +30,7 @@ img {
 }
 
 .profile-img {
-  margin: 24px auto;
+  margin: 25px auto;
   display: block;
 }
 
