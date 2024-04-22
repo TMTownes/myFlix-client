@@ -41075,11 +41075,20 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                        as: (0, _reactRouterDom.Link),
+                                        to: "/users/:Username",
+                                        children: "Profile"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 24,
+                                        columnNumber: 15
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                         onClick: onLoggedOut,
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 24,
+                                        lineNumber: 25,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
@@ -41141,7 +41150,7 @@ var _s = $RefreshSig$();
 const ProfileView = ({ token, user, movies, onSubmit })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const [username, setUsername] = (0, _react.useState)(user.UserName);
+    const [username, setUsername] = (0, _react.useState)(user.Username);
     const [email, setEmail] = (0, _react.useState)(user.Email);
     const [birthdate, setBirthdate] = (0, _react.useState)(user.Birthdate);
     const [password, setPassword] = (0, _react.useState)("");
@@ -41355,7 +41364,7 @@ const ProfileView = ({ token, user, movies, onSubmit })=>{
         ]
     }, void 0, true);
 };
-_s(ProfileView, "fGU0PpdAgJD/rs5B/8JH3YzIksc=");
+_s(ProfileView, "0tHwMWs8kMKmNjNjxg1ttJm/HEM=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");

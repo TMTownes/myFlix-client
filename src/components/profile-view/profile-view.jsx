@@ -11,7 +11,7 @@ import "./profile-view.scss";
 export const ProfileView = ({ token, user, movies, onSubmit }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const [username, setUsername] = useState(user.UserName);
+  const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthdate, setBirthdate] = useState(user.Birthdate);
   const [password, setPassword] = useState("");
