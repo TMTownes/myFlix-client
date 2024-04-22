@@ -42,10 +42,10 @@ const handleSubmit = (event) => {
 )
 .then((response) => {
   if (response.ok) {
-    alert("Update successful");
-    return response.json()
+    alert("Profile has been updated!");
+    return response.json();
   }
-    alert("Update failed");
+    alert("Update failed. Please try again.");
 })
 .then((data) => {
   localStorage.setItem("user", JSON.stringify(data));
