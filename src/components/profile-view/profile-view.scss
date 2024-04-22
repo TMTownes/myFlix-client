@@ -1,0 +1,22 @@
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.profile-img {
+  display: block;
+  margin: 24px auto;
+}
+
+.card {
+  background-color: darkblue;
+}
