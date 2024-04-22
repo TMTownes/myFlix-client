@@ -2,10 +2,11 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { Button, Card, Image} from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
+import "./profile-view.scss";
 
 export const ProfileView = ({ token, user, movies, onSubmit }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -18,7 +19,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
 const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
 
 const formData = {
-  UserName: username,
+  Username: username,
   Email: email,
   Password: password
 };
@@ -29,7 +30,7 @@ const handleSubmit = (event) => {
   event.preventDefault(event);
 
   //send updated user info to the server, endpoint /users/:username
-  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users?Username=${username}`, {
+  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.Username}`, {
     method: "PUT",
     body:JSON.stringify(formData),
     headers: {
@@ -71,7 +72,7 @@ const handleUpdate = (e) => {
 };
 
 const handleDeleteAccount = (id) => {
-  fetch (`https://myflix-retro-af49f4e11172.herokuapp.com/users/${id}`, {
+  fetch (`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.Username}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}`,
   "Content-Type": "application/json"

@@ -53,8 +53,8 @@ export const MainView = () => {
     .catch((err) => {
       console.error("Error fetching movies", err);
     });
-  }, [token]);
-  console.log(movies);
+  }, [token])
+  // console.log(movies);
 
   return (
     <BrowserRouter>
@@ -98,7 +98,7 @@ export const MainView = () => {
            />
            
           <Route
-          path="/profile"
+          path="/users/:Username"
           element={
             <Row className="justify-content-center">
               <Col sm={12} md={9} lg={7} >
