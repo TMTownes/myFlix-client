@@ -9,13 +9,13 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
     <Row>
       <Form onSubmit={handleSubmit}>
         <br/>
-        <h2> Update Profile Information</h2>
+        <h2 className="card-title"> Update Profile Information</h2>
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
           <Form.Control
           type="text"
           minLength={5}
-          value={formData.UserName}
+          value={formData.Username}
           onChange={(e) => handleUpdate(e)}
           required
           />
@@ -27,10 +27,18 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           type="date"
           value={formData.Birthdate}
           onChange={(e) => handleUpdate(e)}
-          required
+          // required
           />
         </Form.Group>
         <br/>
+        <Form.Group controlId="formEmail">
+          <Form.Label> Email: </Form.Label>
+          <Form.Control
+            type="email"
+            value={formData.Email}
+            onChange={(e) => handleUpdate(e)}
+            />
+        </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
           <Form.Control
