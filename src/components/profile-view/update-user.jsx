@@ -15,28 +15,21 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           <Form.Control
           type="text"
           minLength={5}
-          value={formData.Username}
+          value={formData.username}
           onChange={(e) => handleUpdate(e)}
           required
           />
           <br/>
-        </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Control
-          type="date"
-          value={formData.Birthdate}
-          onChange={(e) => handleUpdate(e)}
-          // required
-          />
         </Form.Group>
         <br/>
         <Form.Group controlId="formEmail">
           <Form.Label> Email: </Form.Label>
           <Form.Control
             type="email"
-            value={formData.Email}
+            value={formData.email}
             onChange={(e) => handleUpdate(e)}
+            required
+
             />
         </Form.Group>
         <Form.Group controlId="formPassword">
@@ -44,8 +37,20 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           <Form.Control
           type="password"
           minLength={8}
-          value={formData.Password}
+          value={formData.password}
           onChange={(e) => handleUpdate(e)}
+          required
+
+          />
+        </Form.Group>
+        <br/>
+      <Form.Group controlId="formBirthday">
+          <Form.Label>Birthday:</Form.Label>
+          <Form.Control
+          type="date"
+          value={formData.birthdate}
+          onChange={(e) => handleUpdate(e)}
+          required
           />
         </Form.Group>
         <br/>
@@ -54,7 +59,6 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           Submit Changes{" "}
         </Button>
       </Form>
-      <br/>
     </Row>
   );
 };

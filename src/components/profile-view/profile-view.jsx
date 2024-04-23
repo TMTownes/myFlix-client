@@ -11,9 +11,9 @@ import "./profile-view.scss";
 export const ProfileView = ({ token, user, movies, onSubmit }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const [username, setUsername] = useState(user.Username);
-  const [email, setEmail] = useState(user.Email);
-  const [birthdate, setBirthdate] = useState(user.Birthdate);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [birthdate, setBirthdate] = useState(user.birthdate);
   const [password, setPassword] = useState("");
 
 const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
@@ -21,7 +21,7 @@ const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title))
 const formData = {
   Username: username,
   Email: email,
-  // Birthdate: birthdate,
+  Birthdate: birthdate,
   Password: password
 };
 
@@ -44,17 +44,19 @@ const handleSubmit = (event) => {
   if (response.ok) {
     alert("Profile has been updated!");
     return response.json();
+  } else {
+   alert("Update failed. Please try again.");  
   }
-    alert("Update failed. Please try again.");
 })
-.then((data) => {
-  localStorage.setItem("user", JSON.stringify(data));
-  onSubmit(data);
+.then((updatedUser) => {
+  localStorage.setItem("user", JSON.stringify(updatedUser));
+  onSubmit(updatedUser);
+  setUser(updatedUser);
 })
 .catch((error) => {
   console.error(error);
-  })
-}
+  });
+};
 
 const handleUpdate = (e) => {
   switch(e.target.type) {
@@ -69,9 +71,11 @@ const handleUpdate = (e) => {
       break;
     case "date":
       setBirthdate(e.target.value);
+      break;
       default:
+      break;
   }
-}
+};
 
 const handleDeleteAccount = (id) => {
   fetch (`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.Username}`, {
