@@ -8,13 +8,14 @@ import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import "./profile-view.scss";
 
-export const ProfileView = ({ token, user, movies, onSubmit }) => {
+export const ProfileView = ({ token, user, movies, onSubmit}) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email);
-  const [birthdate, setBirthdate] = useState(user.birthdate);
+  const [username, setUsername] = useState(user.Username);
+  const [email, setEmail] = useState(user.Email);
+  const [birthdate, setBirthdate] = useState(user.Birthdate);
   const [password, setPassword] = useState("");
+  // const [user, setUser] = useState();
 
 const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
 
@@ -48,10 +49,10 @@ const handleSubmit = (event) => {
    alert("Update failed. Please try again.");  
   }
 })
-.then((updatedUser) => {
-  localStorage.setItem("user", JSON.stringify(updatedUser));
-  onSubmit(updatedUser);
-  setUser(updatedUser);
+.then((data) => {
+  localStorage.setItem("user", JSON.stringify(data));
+  onSubmit(data);
+  // setUser(user);
 })
 .catch((error) => {
   console.error(error);
@@ -92,8 +93,9 @@ const handleDeleteAccount = (id) => {
     } else {
       alert(" Something has gone wrong.");
     }
-  })
-}
+  });
+};
+
 
 return (
   <>
