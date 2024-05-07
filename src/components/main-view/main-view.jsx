@@ -9,6 +9,7 @@ import { Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
+
 export const MainView = () => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
@@ -44,7 +45,8 @@ export const MainView = () => {
           title: movie.Title,
           genre: movie.Genre,
           description: movie.Description,
-          director: movie.Director.Name
+          director: movie.Director.Name,
+          actors: movie.Actors
         };
       });
       localStorage.setItem("movies", JSON.stringify(moviesFromApi));
@@ -53,13 +55,13 @@ export const MainView = () => {
     .catch((err) => {
       console.error("Error fetching movies", err);
     });
-  }, [token])
+  },[token])
   // console.log(movies);
 
   return (
     <BrowserRouter>
     <NavigationBar
-      user={user}
+      localUser={user}
       onLoggedOut={() => {
         setUser(null);
         setToken(null);
@@ -122,7 +124,6 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  // selectedMovie ?
                   
                   <Col>The list is empty!</Col>
                 ) : (
@@ -144,10 +145,10 @@ export const MainView = () => {
                 ) : (
                   <> 
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>
+                      <Col className="mb-4" key={movie._id} sm={6} md={4} lg={3}>
                       <MovieCard
-                      isFavorite={user.FavoriteMovies.includes(movie.title)}
                       movie={movie} 
+                      isFavorite={user.FavoriteMovies.includes(movie.title)}
                      />
                       </Col>
                     ))}

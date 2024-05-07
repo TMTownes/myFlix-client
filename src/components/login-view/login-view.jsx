@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
 
 export const LoginView = ({onLoggedIn}) => {
@@ -14,13 +15,15 @@ export const LoginView = ({onLoggedIn}) => {
       Password: password
     };
 
+
     fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/login?Username=${username}&Password=${password}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    }).then((response) => response.json())
+    })
+    .then((response) => response.json())
     .then((data) => {
       console.log("Login response: ", data);
       if (data.user) {
@@ -60,4 +63,8 @@ export const LoginView = ({onLoggedIn}) => {
       <Button variant="primary" type="submit">Submit</Button>
     </Form>
   );
+};
+
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired
 };

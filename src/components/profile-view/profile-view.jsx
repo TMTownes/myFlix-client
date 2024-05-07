@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import "./profile-view.scss";
 
-export const ProfileView = ({ token, user, movies, onSubmit}) => {
+export const ProfileView = ({ token, localUser, movies}) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const [username, setUsername] = useState(user.Username);
-  const [email, setEmail] = useState(user.Email);
-  const [birthdate, setBirthdate] = useState(user.Birthdate);
+  const [username, setUsername] = useState(storedUser.Username);
+  const [email, setEmail] = useState(storedUser.Email);
+  const [birthdate, setBirthdate] = useState(storedUser.Birthdate);
   const [password, setPassword] = useState("");
-  // const [user, setUser] = useState();
+  const [user, setUser] = useState();
 
-const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
+const favoriteMovies = user === undefined ? [] : movies.filter(m => user.FavoriteMovies.includes(m.title));
 
 const formData = {
   Username: username,
@@ -32,7 +33,7 @@ const handleSubmit = (event) => {
   event.preventDefault(event);
 
   //send updated user info to the server, endpoint /users/:username
-  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.Username}`, {
+  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.username}`, {
     method: "PUT",
     body: JSON.stringify(formData),
     headers: {
@@ -49,10 +50,11 @@ const handleSubmit = (event) => {
    alert("Update failed. Please try again.");  
   }
 })
-.then((data) => {
-  localStorage.setItem("user", JSON.stringify(data));
-  onSubmit(data);
-  // setUser(user);
+.then((user) => {
+  if (user) {
+  localStorage.setItem("user", JSON.stringify(user));
+  setUser(user);
+  }
 })
 .catch((error) => {
   console.error(error);
@@ -78,7 +80,7 @@ const handleUpdate = (e) => {
   }
 };
 
-const handleDeleteAccount = (id) => {
+const handleDeleteAccount = () => {
   fetch (`https://myflix-retro-af49f4e11172.herokuapp.com/users/${storedUser.Username}`, {
     method: "DELETE",
     headers: { 
@@ -96,9 +98,39 @@ const handleDeleteAccount = (id) => {
   });
 };
 
+useEffect(() => {
+  if (!token) {
+    return;
+  }
+
+  fetch("https://myflix-retro-af49f4e11172.herokuapp.com/users", {
+    headers: {Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json"}
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Users data: ", data);
+    const usersFromApi = data.map((resultUser) => {
+      return {
+        id: resultUser._id,
+        username: resultUser.username,
+        password: resultUser.password,
+        email: resultUser.email,
+        birthdate: resultUser.birthdate,
+        favoriteMovies: resultUser.favoriteMovies
+      };
+    });
+    setUser(usersFromApi.find((u)=> u.username === localUser.username));
+    console.log("Profile Saved User: " + JSON.stringify(user));
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}, [token]);
+
 
 return (
-  <>
+  <Container>
   <Row>
     <Card>
       <Row>
@@ -115,9 +147,7 @@ return (
     <Col>
     </Col>
     <Card.Title><h2> Welcome {username}! </h2></Card.Title>
-    <Card.Text>
-      {email}
-    </Card.Text>
+    <Card.Text> {email}</Card.Text>
     <br/>
     <Button onClick={() => handleDeleteAccount(storedUser._id)}
       className="button-delete mt-3"
@@ -138,8 +168,15 @@ return (
   </Row>
   <hr/>
   <Row className="justify-content-center">
-    <FavoriteMovies user={user} favoriteMovies={favoriteMovies} />
+    <FavoriteMovies localUser={user} favoriteMovies={favoriteMovies} />
   </Row>
-  </>
-  );
+  </Container>
+  )
 }
+ProfileView.propTypes = {
+  localUser: PropTypes.object.isRequired,
+  movies: PropTypes.array.isRequired,
+  token: PropTypes.string.isRequired
+};
+
+
