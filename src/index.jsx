@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { MainView } from "./components/main-view/main-view";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 
 //Import statement: indicates need to bundle `./index.scss`
