@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button, Card, Container } from "react-bootstrap";
-import { MainView } from "../main-view/main-view";
 
-
-
+// This is the Movie Poster
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
 
@@ -21,11 +19,11 @@ export const MovieView = ({ movies }) => {
   }, [])
  
   return (
-    <Container>
+    <Container className="container-fluid">
     <Col>
-    <Row>
+    <Row >
         <Card >
-          <Card.Body >
+          <Card.Body className="row">
             <Card.Img src={movie?.image} className="img-container d-flex justify-content-start m-3" alt="Movie Poster"/>
             <Card.Title>{movie?.title}</Card.Title>
             <Card.Text>{movie?.description}</Card.Text>
@@ -39,15 +37,6 @@ export const MovieView = ({ movies }) => {
 }
 
 MovieView.propTypes = {
-  movies: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    image: PropTypes.string,
-    director: PropTypes.string,
-    description: PropTypes.array,
-    genre: PropTypes.string,
-    actor: PropTypes.string
-  }).isRequired
-
+  movies: PropTypes.array
     
 };

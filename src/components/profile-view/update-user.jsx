@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import PropTypes from "prop-types";
 
 export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
+
   return (
     <Row>
       <Form onSubmit={handleSubmit}>
@@ -15,7 +16,7 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           <Form.Control
           type="text"
           minLength={5}
-          value={formData.Username}
+          value={formData.username}
           onChange={(e) => handleUpdate(e)}
           required
           />
@@ -40,7 +41,6 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
           value={formData.Password}
           onChange={(e) => handleUpdate(e)}
           required
-
           />
         </Form.Group>
         <br/>
@@ -62,8 +62,9 @@ export const UpdateUser = ({formData, handleUpdate, handleSubmit }) => {
     </Row>
   );
 };
+
 UpdateUser.propTypes = {
-  formData: PropTypes.object.isRequired,
-  handleUpdate: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  formData: PropTypes.object,
+  handleUpdate: PropTypes.func,
+  handleSubmit: PropTypes.func
 };

@@ -20,3 +20,21 @@
 .card {
   background-color: darkblue;
 }
+
+.fav-movies {
+  margin-bottom: 16px;
+  figure {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    img {
+      height: 400px;
+    }
+    button.btn {
+      display: block;
+      margin:auto;
+    }
+  }
+}

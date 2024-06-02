@@ -6,8 +6,12 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
+import { SearchBox } from "../SearchBox/searchBox";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
+// import PropTypes from "prop-types"
+// import { HomePage } from "../home-page";
 
 
 export const MainView = () => {
@@ -16,8 +20,9 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);  
   const [movies, setMovies] = useState([]);
-
-
+  const [query, setQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
+ 
 
   useEffect(() => {
     if (!token) {
@@ -30,7 +35,7 @@ export const MainView = () => {
     })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Failed to fectch movies");
+        throw new Error("Failed to fe tch movies");
       }
       return response.json();
     })
@@ -46,37 +51,49 @@ export const MainView = () => {
           genre: movie.Genre,
           description: movie.Description,
           director: movie.Director.Name,
-          actors: movie.Actors
+          actors: movie.Actors?.[0]
         };
       });
-      localStorage.setItem("movies", JSON.stringify(moviesFromApi));
+      // localStorage.setItem("movies", JSON.stringify(moviesFromApi));
       setMovies(moviesFromApi);
     })
     .catch((err) => {
       console.error("Error fetching movies", err);
     });
-  },[token])
+  },[token]);
   // console.log(movies);
+
+  const handleSearch = (e)=> {
+    const query = e.target.value;
+    setQuery(query);
+  };
+ 
 
   return (
     <BrowserRouter>
+    <Row className="justify-content-md-center">
+    
     <NavigationBar
-      localUser={user}
+      user={user}
       onLoggedOut={() => {
         setUser(null);
         setToken(null);
-        localStorage.clear();
+        // localStorage.clear();
       }}
       />
-
-      <Row className="justify-content-md-center">
-        <Routes>
+      <Routes>  
           <Route
             path="/users"
             element={
+              <>
+              {user ? (
+                <Navigate to="/"/>
+              ) : (
             <Col md={5}>
               <SignupView />
             </Col>
+            )}
+            </>
             }
           />
           
@@ -115,51 +132,67 @@ export const MainView = () => {
                 )}
               </Col>
             </Row>
-          }
-          />
-          <Route 
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col sm={12} md={8} lg={6}>
-                    <MovieView movies={movies} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <> 
-                    {movies.map((movie) => (
-                      <Col className="mb-4" key={movie._id} sm={6} md={4} lg={3}>
-                      <MovieCard
-                      movie={movie} 
-                      isFavorite={user.FavoriteMovies.includes(movie.title)}
-                     />
-                      </Col>
-                    ))}
-                  </>
-                )}
-              </>
-            }
-          />
+              }
+              />
+              <Route 
+                path="/movies/:movieId"
+                element={
+                  <>
+                    {!user ? (
+                      <Navigate to="/login" replace />
+                    ) : movies.length === 0 ? (
+                      <Row><Col>
+                        <SearchBox
+                        handleSearch={handleSearch}
+                        query={query}
+                        />
+                    </Col>  
+                      <Col>The list is empty!</Col></Row> 
+                    ) : (
+                   <Col sm={12} md={8} lg={6}>
 
+                    <MovieView movies={movies} />
+                     
+                          
+                    </Col>
+                  )} 
+
+                  </>
+                }
+                />
+                  
+           <Route
+                path="/"
+                element=
+                
+                  {!user ? ( <Navigate to="/login" replace/> ) : movies.map((movie) => (
+                    
+                     
+                     <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>   
+                       
+                       <MovieCard
+                    movie={movie} 
+                    isFavorite={user.FavoriteMovies.includes(movie.title)}
+                    />
+
+                      </Col>
+                     
+                    ))}
+                 />  
+                
+              
         </Routes>
-      </Row>
-    </BrowserRouter>
+    </Row>
+  </BrowserRouter>
   );
 };
+
+// MainView.propTypes = {
+//   movie: PropTypes.shape({
+//     id: PropTypes.string,
+//     title: PropTypes.string,
+//     imgae: PropTypes.strig,
+//     director: PropTypes.string,
+//     description: PropTypes.string,
+//   }).isRequired
+// };
