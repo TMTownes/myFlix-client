@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -6,12 +7,9 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-// import { Form } from "react-bootstrap";
-import { SearchBox } from "../SearchBox/searchBox";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
-// import PropTypes from "prop-types"
-// import { HomePage } from "../home-page";
+
 
 
 export const MainView = () => {
@@ -21,12 +19,14 @@ export const MainView = () => {
   const [token, setToken] = useState(null);  
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
-  // const [searchQuery, setSearchQuery] = useState("");
- 
+
+  // const [isDirectNavigation, setIsDirectNavigation] = useState(false);
+  
+  // const { movieId } = useParams();
 
   useEffect(() => {
     if (!token) {
-      return;
+      return ;
     }
 
     fetch("https://myflix-retro-af49f4e11172.herokuapp.com/movies",
@@ -35,7 +35,7 @@ export const MainView = () => {
     })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Failed to fe tch movies");
+        throw new Error("Failed to fetch movies");
       }
       return response.json();
     })
@@ -63,136 +63,147 @@ export const MainView = () => {
   },[token]);
   // console.log(movies);
 
-  const handleSearch = (e)=> {
-    const query = e.target.value;
-    setQuery(query);
-  };
+    const handleSearch = (e) => {
+        const query = e.target.value;
+        setQuery(query);
+
+        // const storedMovies = JSON.parse(localStorage.getItem("movies"));
+
+        const filterMovies = movies.filter((movie) => {
+          return (
+          movie.title.toLowerCase().includes(query.toLowerCase())
+          );
+          
+        })
+        setMovies(filterMovies);
+    };
+    console.clear();
  
+//  useEffect(() => {
+//   setIsDirectNavigation(Boolean(movieId));
+//  }, [movieId]);
+  // const filterMovies = user === undefined ? []: movies.filter(m => user.filterMovies.includes(m.id));
+
+
 
   return (
-    <BrowserRouter>
-    <Row className="justify-content-md-center">
     
+  <Router>
+  <Row className="justify-content-md-center">
     <NavigationBar
+      handleSearch={handleSearch}
+      query={query}
       user={user}
       onLoggedOut={() => {
         setUser(null);
         setToken(null);
         // localStorage.clear();
       }}
+      // isDirectNavigation={isDirectNavigation}
+    />
+    <Routes>
+      
+      <Route
+      //Home Page
+        path="/"
+        element={
+          <> 
+          {user ? (
+           <Row className="justify-content-fluid">
+            {movies.map((movie) => (
+             
+
+              <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>
+                <MovieCard
+                  movie={movie}
+                  isFavorite={user && user.FavoriteMovies.includes(movie.id)}
+                />
+                </Col>
+              
+              ))}
+            </Row> 
+            
+            ) : (
+              <Navigate to="/login" replace />
+              
+           
+        )}
+       </>     
+        
+        }
       />
-      <Routes>  
-          <Route
-            path="/users"
-            element={
-              <>
-              {user ? (
-                <Navigate to="/"/>
-              ) : (
+      <Route
+      
+        path="/movies/:movieId"
+        element={
+         <>
+         {!user ? (
+              <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+              <Col> The List is empty!</Col>
+                ) : (
+              <Row className="justify-content-center row">
+              <Col sm={12} md={8} lg={6}>
+                <MovieView movies={movies} />
+              </Col>
+            </Row>            
+            )}
+          </>
+        }
+     /> 
+      <Route
+        path="/users/:Username"
+        element={
+
+          user ? (
+            <Row className="justify-content-center">
+              <Col sm={12} md={9} lg={7}>
+                <ProfileView
+                  token={token}
+                  user={user}
+                  movies={movies}
+                  onSubmit={(user) => setUser(user)}
+                />
+              </Col>
+            </Row>
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          user ? (
+            <Navigate to="/" replace />
+          ) : (
+            <Row>
+            <Col md={5}>
+              <LoginView
+                onLoggedIn={(user, token) => {
+                  setUser(user);
+                  setToken(token);
+                }}
+              />
+            </Col>
+            </Row>
+          )
+        }
+      />
+      <Route
+        path="/users"
+        element={
+          user ? (
+            <Navigate to="/" replace />
+          ) : (
             <Col md={5}>
               <SignupView />
             </Col>
-            )}
-            </>
-            }
-          />
-          
-          <Route
-            path="/login"
-            element={
-              <>
-              {user ? (
-                <Navigate to="/" />
-              ) : ( 
-              <Col md={5}>
-                <LoginView onLoggedIn={(user, token) => { 
-                  setUser(user); 
-                  setToken(token);
-                  }}
-                  />
-                </Col>
-              )}
-              </>
-            }
-           />
-           
-          <Route
-          path="/users/:Username"
-          element={
-            <Row className="justify-content-center">
-              <Col sm={12} md={9} lg={7} >
-                {user ? (
-                  <><ProfileView
-                    token={token}
-                    user={user}
-                    movies={movies}
-                    onSubmit={(user) => setUser(user)} /></>
-                  ): ( 
-                <Navigate to="/login" />
-                )}
-              </Col>
-            </Row>
-              }
-              />
-              <Route 
-                path="/movies/:movieId"
-                element={
-                  <>
-                    {!user ? (
-                      <Navigate to="/login" replace />
-                    ) : movies.length === 0 ? (
-                      <Row><Col>
-                        <SearchBox
-                        handleSearch={handleSearch}
-                        query={query}
-                        />
-                    </Col>  
-                      <Col>The list is empty!</Col></Row> 
-                    ) : (
-                   <Col sm={12} md={8} lg={6}>
-
-                    <MovieView movies={movies} />
-                     
-                          
-                    </Col>
-                  )} 
-
-                  </>
-                }
-                />
-                  
-           <Route
-                path="/"
-                element=
-                
-                  {!user ? ( <Navigate to="/login" replace/> ) : movies.map((movie) => (
-                    
-                     
-                     <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>   
-                       
-                       <MovieCard
-                    movie={movie} 
-                    isFavorite={user.FavoriteMovies.includes(movie.title)}
-                    />
-
-                      </Col>
-                     
-                    ))}
-                 />  
-                
-              
-        </Routes>
-    </Row>
-  </BrowserRouter>
+          )
+        }
+      />
+    </Routes>
+  </Row>
+</Router>
   );
 };
-
-// MainView.propTypes = {
-//   movie: PropTypes.shape({
-//     id: PropTypes.string,
-//     title: PropTypes.string,
-//     imgae: PropTypes.strig,
-//     director: PropTypes.string,
-//     description: PropTypes.string,
-//   }).isRequired
-// };
