@@ -1,41 +1,45 @@
-import { useParams } from "react-router";
+import React from "react";
+import {useEffect} from "react";
+import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 import "./movie-view.scss";
-// import Proptypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { Button, Card, Container } from "react-bootstrap";
 
-export const MovieView = ({ movie }) => {
+// This is the Movie Poster
+export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-  const [selectedMovie, setSelectedMovie] = useState();
 
+  const movie = movies.find((m) => m.id === movieId);
+  // console.log("found movies" + movies.find());
   useEffect(() => {
-  const foundMovie = movie.find((movie) => movie._id === movieId);
-  if (foundMovie) {
-    setSelectedMovie(foundMovie);
-  }
 
-  }, [movieId, movie]);
-
-
+  }, []);
+ 
   return (
-    <div>
-      <div>
-        <img className="w-100" src={selectedMovie?.ImagePath} />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{selectedMovie?.Title}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{selectedMovie?.Director.Name}</span>
-      </div>
-      <Link to={`/`}>
-      <button className="back-button" style={{cursor: "pointer"}}>
-        Back
-      </button>
-      </Link>
-    </div>
-  );
-};
+    <Container className="container-fluid">
+      
+    <Col>
+    <Row>
+        <Card >
+          <Card.Body >
+            <Card.Img className="m-3" src={movie?.image}  alt="Movie Poster"/>
+            
+          </Card.Body>
+          <Card.Title>{movie?.title}</Card.Title>
+          <Card.Text>{movie?.description}</Card.Text>
+        </Card>
+        <Link to={`/`}><Button type="button back-button " variant="primary"> Back </Button></Link>
 
+      </Row>
+    </Col>
+   </Container> 
+  )
+}
+
+MovieView.propTypes = {
+  movies: PropTypes.array
+    
+};

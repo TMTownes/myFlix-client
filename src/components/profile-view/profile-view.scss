@@ -1,0 +1,74 @@
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  margin-top:10px;
+  margin-bottom:10px;
+  background-color:#FFF;
+  
+  button.btn {
+    display: block;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.card-title {
+  // text-align: auto;
+  justify-content: center;
+  h2 {
+    margin: 15px;
+     text-overflow: ellipsis;
+
+  }
+}
+
+.card-text {
+  // text-align: auto;
+  justify-content: center;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+}
+
+
+.movie-card-img {
+  display: block;
+  position: auto;
+
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100px;
+}
+
+.w-100 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out;
+}
+.w-100:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transform: scale(1.15);
+}
+
+.profile-img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  position: auto;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.card {
+  background-color: darkblue;
+  text-align: auto;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}

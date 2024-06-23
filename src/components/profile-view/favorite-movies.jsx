@@ -1,32 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap";
-
-import { Link } from "react-router-dom";
+import Col from "react-bootstrap/Col";
+import Figure from "react-bootstrap/Figure";
 import { MovieCard } from "../movie-card/movie-card";
-import "./favorite-movies.scss";
+import "./profile-view";
 
-export const FavoriteMovies = ({user, favoriteMovies}) => {
+export const FavoriteMovies = ({favoriteMovies}) => {
+
+  
   return (
     <Col className="mb-5">
-      <h3 className="title">Favorite Movies List!</h3>
-      <Row>
+      <Row className="row">
+        <Figure>
         {favoriteMovies.map((movie) => (
-          <Col xs={12} md={6} lg={3} key={movie._id}>
-            <Link to={`/movies/${movie._id}`} />
+          <Col xs={12} md={10} lg={6} key={movie.id} className="fav-movies">
+           
             <MovieCard
-            key={movie._id}
-            isFavorite={user.FavoriteMovies.includes(movie.title)}
+            key={movie.id}
+            //what are we doing with this? Just need to confirm its a fav
+            isFavorite={true}
             movie={movie}
             />
-          </Col>
+          </Col> 
         ))}
+        </Figure>
       </Row>
     </Col>
   );
 }
 FavoriteMovies.propTypes = {
-  favoriteMovies: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired
+  favoriteMovies: PropTypes.array,
+
 };

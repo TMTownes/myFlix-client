@@ -1,5 +1,6 @@
+import React from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Card } from "react-bootstrap";
 
 
 export const SignupView = () => {
@@ -29,11 +30,12 @@ const [birthday, setBirthday] = useState("");
         window.location.reload();
       } else {
         alert("Signup failed");
-      }
+      } 
     });
   };
 
   return (
+    <Card className="signup mb-5">
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -74,5 +76,6 @@ const [birthday, setBirthday] = useState("");
       </Form.Group>      
       <Button variant="primary" type="submit">Sign Up</Button>
     </Form>
+    </Card>
   );
 };
