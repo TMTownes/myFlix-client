@@ -3,38 +3,25 @@ import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Figure from "react-bootstrap/Figure";
-
-// import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import "./profile-view";
-import { Button } from "react-bootstrap";
 
-export const FavoriteMovies = ({user, favoriteMovies, handleRemoveFromFavorites}) => {
+export const FavoriteMovies = ({favoriteMovies}) => {
 
   
   return (
     <Col className="mb-5">
-      <Row>
+      <Row className="row">
         <Figure>
         {favoriteMovies.map((movie) => (
-          <Col xs={12} md={6} lg={3} key={movie.id} className="fav-movies">
-            {/* <Figure>
-              <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
-              <Figure.Image>
-                <Figure.Caption src={movie.image}
-                alt={movie.title}
-                >
-                Favorite Movies List!
-                </Figure.Caption>
-              </Figure.Image> */}
+          <Col xs={12} md={10} lg={6} key={movie.id} className="fav-movies">
+           
             <MovieCard
             key={movie.id}
             //what are we doing with this? Just need to confirm its a fav
-            isFavorite={user.FavoriteMovies.includes(movie.title)}
+            isFavorite={true}
             movie={movie}
             />
-            {/* </Link> */}
-            <Button variant="secondary" onClick={handleRemoveFromFavorites} > Remove From List </Button>
           </Col> 
         ))}
         </Figure>
@@ -44,6 +31,5 @@ export const FavoriteMovies = ({user, favoriteMovies, handleRemoveFromFavorites}
 }
 FavoriteMovies.propTypes = {
   favoriteMovies: PropTypes.array,
-  user: PropTypes.object,
-  handleRemoveFromFavorites: PropTypes.func
+
 };
