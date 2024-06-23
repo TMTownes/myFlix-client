@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
+import { Row, Col, Figure } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
 
 export const LoginView = ({onLoggedIn}) => {
   const [username, setUsername] = useState("");
@@ -40,6 +44,18 @@ export const LoginView = ({onLoggedIn}) => {
   };
 
   return (
+  <Row>
+    <Col>
+   <Figure className="justify-content-center container">
+
+      <Figure.Caption><h2>Welcome to The Flix</h2></Figure.Caption>
+      <Figure.Image className="img-fluid" 
+      src="./img/retroArcade.jpeg"
+      alt="Arcade" />
+      
+  
+    
+    
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username: </Form.Label>
@@ -62,6 +78,9 @@ export const LoginView = ({onLoggedIn}) => {
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
     </Form>
+    </Figure>
+    </Col>
+    </Row>
   );
 };
 
