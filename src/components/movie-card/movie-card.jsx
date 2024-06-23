@@ -81,7 +81,7 @@ useEffect(() => {
 
 const removeFromFavorites = () => {
   
-  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com//users/${user.Username}/movies/${encodeURIComponent(movie.id)}`,
+  fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users/${user.Username}/movies/${encodeURIComponent(movie.id)}`,
   {
     method: "DELETE",
     headers: {
@@ -111,13 +111,17 @@ const removeFromFavorites = () => {
 
 
   return (
-    <Card className="h-100">
-      <Link className="link-card" to={`/movies/${encodeURIComponent(movie.id)}`}>
-     <Card.Body> 
-      <Card.Img className="w-100" variant="top" src={movie.image}/>
-        <Card.Title>{movie?.title}</Card.Title>
-        <Card.Text>{movie?.director}</Card.Text>
-       </Card.Body>  
+    <Card className="h-100 container-fluid">
+      <Link className="link-card" to={`/movies/${encodeURIComponent(movie?.id)}`}>
+     
+     <Card.Body className="movie-card-img"> 
+      <Card.Title>{movie?.title}</Card.Title>
+      <Card.Text>{movie?.director}</Card.Text>
+      
+       </Card.Body > 
+       <Card.Body className="hover-zoom">
+        <Card.Img className="w-100" variant="top" src={movie?.image} />
+        </Card.Body>
        </Link>
         <Card.Body>
         {isFavorite ? (
@@ -126,7 +130,9 @@ const removeFromFavorites = () => {
           <Button variant="primary" type="button" className="btn btn-outline-info" onClick={handleAddToFavorites}> 
           Add </Button>
         )}
+       
         </Card.Body>
+         
   </Card>
   );
 };

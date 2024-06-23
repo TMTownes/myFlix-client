@@ -1,9 +1,27 @@
 .title {
-  margin:24px 0 16px ;
-  text-align: center;
+  margin: 0px ;
+  text-align: relative;
 }
 
 .add-fav-movie {
   color: #e91e63;
 }
 
+.fav-movies {
+  margin-bottom: 50px;
+  flex-direction: row;
+  figure {
+    // position: auto;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // width: 100%;
+    img {
+      height: 200px;
+    }
+    button.btn {
+      display: block;
+      margin:auto;
+    }
+  }
+}

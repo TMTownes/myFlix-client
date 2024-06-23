@@ -13,23 +13,26 @@ export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.id === movieId);
-
+  // console.log("found movies" + movies.find());
   useEffect(() => {
 
-  }, [])
+  }, []);
  
   return (
     <Container className="container-fluid">
+      
     <Col>
-    <Row >
+    <Row>
         <Card >
-          <Card.Body className="row">
-            <Card.Img src={movie?.image} className="img-container d-flex justify-content-start m-3" alt="Movie Poster"/>
-            <Card.Title>{movie?.title}</Card.Title>
-            <Card.Text>{movie?.description}</Card.Text>
-            <Link to={`/`}><Button type="button" variant="primary"> Back </Button></Link>
+          <Card.Body >
+            <Card.Img className="m-3" src={movie?.image}  alt="Movie Poster"/>
+            
           </Card.Body>
+          <Card.Title>{movie?.title}</Card.Title>
+          <Card.Text>{movie?.description}</Card.Text>
         </Card>
+        <Link to={`/`}><Button type="button back-button " variant="primary"> Back </Button></Link>
+
       </Row>
     </Col>
    </Container> 
