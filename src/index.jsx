@@ -1,17 +1,23 @@
+import React from "react";
 import { createRoot } from "react-dom/client";
 import { MainView } from "./components/main-view/main-view";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
+// import { BrowserRouter } from "react-router-dom";
+
 
 //Import statement: indicates need to bundle `./index.scss`
 import "./index.scss";
+// import { Container } from "react-bootstrap";
 
 //Main component (will contain all others)
 const MyFlixApplication = () => {
   return (
-  <Container >
+    <React.StrictMode>
+    <Container >
     <MainView />
     </Container>
+    </React.StrictMode>
   );
 };
 
