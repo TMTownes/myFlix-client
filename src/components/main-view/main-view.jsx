@@ -10,15 +10,19 @@ import { Col } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
-
+// import { useSelector, useDispatch } from "react-redux";
+// import { setMovies } from "../../redux/reducers/movies/movies";
 
 export const MainView = () => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(null);
+  // const user = useSelector((state) => state.user);
   const [token, setToken] = useState(null);  
   const [movies, setMovies] = useState([]);
+  // const movies = useSelector((state) => state.movies);
   const [query, setQuery] = useState("");
+  // const dispatch = useDispatch();
 
   // const [isDirectNavigation, setIsDirectNavigation] = useState(false);
   
@@ -56,6 +60,7 @@ export const MainView = () => {
       });
       // localStorage.setItem("movies", JSON.stringify(moviesFromApi));
       setMovies(moviesFromApi);
+      // dispatch(setMovies(moviesFromApi));
     })
     .catch((err) => {
       console.error("Error fetching movies", err);
@@ -90,6 +95,7 @@ export const MainView = () => {
     
   <Router>
   <Row className="justify-content-md-center">
+  {/* remove user prop for redux */}
     <NavigationBar
       handleSearch={handleSearch}
       query={query}
@@ -115,6 +121,7 @@ export const MainView = () => {
 
               <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>
                 <MovieCard
+                //remove movie prop for redux?
                   movie={movie}
                   isFavorite={user && user.FavoriteMovies.includes(movie.id)}
                 />
@@ -144,6 +151,7 @@ export const MainView = () => {
                 ) : (
               <Row className="justify-content-center row">
               <Col sm={12} md={8} lg={6}>
+              {/* Remove movies prop for redux */}
                 <MovieView movies={movies} />
               </Col>
             </Row>            
@@ -159,6 +167,7 @@ export const MainView = () => {
             <Row className="justify-content-center">
               <Col sm={12} md={9} lg={7}>
                 <ProfileView
+                //remove user, token, and movie props for redux. Then update ProfileView
                   token={token}
                   user={user}
                   movies={movies}
@@ -180,6 +189,7 @@ export const MainView = () => {
             <Row>
             <Col md={5}>
               <LoginView
+              //remove user and token props for redux
                 onLoggedIn={(user, token) => {
                   setUser(user);
                   setToken(token);
