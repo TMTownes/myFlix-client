@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
 import { Row, Col, Figure } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import { setUser } from "../../redux/reducers/user/user"; for redux
 
 
 
 export const LoginView = ({onLoggedIn}) => {
+  // removed onLoggedIn prop
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,9 +33,12 @@ export const LoginView = ({onLoggedIn}) => {
     .then((data) => {
       console.log("Login response: ", data);
       if (data.user) {
+        //is this needed?
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", data.token);
+        // replaced onLoggedIn for redux
         onLoggedIn(data.user, data.token);
+        // dispatchEvent(setUser(data.username), setToken(data.token));
       } else {
         alert("No such user");
       }

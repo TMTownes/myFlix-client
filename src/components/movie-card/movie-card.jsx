@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export const MovieCard = ({movie, isFavorite}) => {
+
 const storedToken = localStorage.getItem("token");
 const storedUser = JSON.parse(localStorage.getItem("user"));
 //other storage 
@@ -68,7 +69,7 @@ useEffect(() => {
     //check if this is reachable
     .then((updatedUser) => {
       if (updatedUser) {
-       localStorage.setItem("user", JSON.stringify(updatedUser));
+      //  localStorage.setItem("user", JSON.stringify(updatedUser));
       setUser(updatedUser)}
     }
   )
@@ -146,6 +147,5 @@ MovieCard.propTypes = {
       director: PropTypes.string,
       description: PropTypes.string
     
-    }).isRequired
-   
+    }).isRequired   
 };

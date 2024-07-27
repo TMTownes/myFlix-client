@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button, Card, Container } from "react-bootstrap";
+// import { useSelector } from "react-redux"; for redux
 
-// This is the Movie Poster
+// This is the Movie Poster. Removed movies prop for redux
 export const MovieView = ({ movies }) => {
+  // const movies = useSelector((state) => state.movies);
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.id === movieId);
