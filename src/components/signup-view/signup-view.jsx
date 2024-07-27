@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Form, Card } from "react-bootstrap";
+import { Button, Form, Card, Figure, CardHeader } from "react-bootstrap";
 
 
 export const SignupView = () => {
@@ -36,6 +36,12 @@ const [birthday, setBirthday] = useState("");
 
   return (
     <Card className="signup mb-5">
+      <CardHeader >
+        <h2>Join Us!</h2>
+      </CardHeader>
+      <Card.Img src="https://st4.depositphotos.com/11486624/20887/i/450/depositphotos_208873832-stock-photo-retro-cinema-night-neon-animation.jpg"
+      alt="Arcade Signup"
+      />
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>

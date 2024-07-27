@@ -51,11 +51,11 @@ export const LoginView = ({onLoggedIn}) => {
   return (
   <Row>
     <Col>
-   <Figure className="justify-content-center container">
+   <Figure className=" figure justify-content-center container">
 
-      <Figure.Caption><h2>Welcome to The Flix</h2></Figure.Caption>
-      <Figure.Image className="img-fluid" 
-      src="./img/retroArcade.jpeg"
+      <Figure.Caption className="figure-caption"><h2>Welcome to The Flix</h2></Figure.Caption>
+      <img className="figure-img img-fluid rounded shadow-3 mb-3" 
+      src="https://image.roku.com/developer_channels/prod/0b4220080e21631abbe1c40171297d06639440a20af80e02472cd4ebe23ed512.png"
       alt="Arcade" />
       
   

@@ -28859,7 +28859,7 @@ var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup)
 var _tooltip = require("./Tooltip");
 var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":"2L2I6","./Collapse":false,"./Container":"hEdsw","./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":"7Eckp","./FigureCaption":false,"./FigureImage":false,"./Form":"iBZ80","./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":"cXyL2","./Navbar":"1mHjo","./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":"cMC39","./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aPzUt":[function(require,module,exports) {
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":"dXnnx","./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":"2L2I6","./Collapse":false,"./Container":"hEdsw","./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":"7Eckp","./FigureCaption":false,"./FigureImage":false,"./Form":"iBZ80","./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":"cXyL2","./Navbar":"1mHjo","./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":"cMC39","./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aPzUt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -42049,24 +42049,25 @@ const LoginView = ({ onLoggedIn })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Figure), {
-                className: "justify-content-center container",
+                className: " figure justify-content-center container",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Figure).Caption, {
+                        className: "figure-caption",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                             children: "Welcome to The Flix"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
                             lineNumber: 56,
-                            columnNumber: 23
+                            columnNumber: 50
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
                         lineNumber: 56,
                         columnNumber: 7
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Figure).Image, {
-                        className: "img-fluid",
-                        src: "./img/retroArcade.jpeg",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        className: "figure-img img-fluid rounded shadow-3 mb-3",
+                        src: "https://image.roku.com/developer_channels/prod/0b4220080e21631abbe1c40171297d06639440a20af80e02472cd4ebe23ed512.png",
                         alt: "Arcade"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
@@ -42222,130 +42223,153 @@ const SignupView = ()=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "signup mb-5",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-            onSubmit: handleSubmit,
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                    controlId: "formUsername",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                            children: "Username:"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 41,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                            type: "text",
-                            minLength: "3",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 42,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 40,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                    controlId: "formPassword",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                            children: "Password:"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 51,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "current-password",
-                            value: password,
-                            onChange: (e)=>setPassword(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 52,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 50,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                    controlId: "formEmail",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                            children: "Email:"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 60,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                            type: "current-email",
-                            value: email,
-                            onChange: (e)=>setEmail(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 61,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 59,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                    controlId: "formBirthday",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                            children: "Birthday:"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 69,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                            type: "date",
-                            value: birthday,
-                            onChange: (e)=>setBirthday(e.target.value),
-                            required: true
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 70,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 68,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    variant: "primary",
-                    type: "submit",
-                    children: "Sign Up"
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.CardHeader), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: "Join Us!"
                 }, void 0, false, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 77,
-                    columnNumber: 7
+                    lineNumber: 40,
+                    columnNumber: 9
                 }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/signup-view/signup-view.jsx",
-            lineNumber: 39,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false, {
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 39,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                src: "https://st4.depositphotos.com/11486624/20887/i/450/depositphotos_208873832-stock-photo-retro-cinema-night-neon-animation.jpg",
+                alt: "Arcade Signup"
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 42,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                onSubmit: handleSubmit,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                        controlId: "formUsername",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                children: "Username:"
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 47,
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "text",
+                                minLength: "3",
+                                value: username,
+                                onChange: (e)=>setUsername(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 48,
+                                columnNumber: 9
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 46,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                        controlId: "formPassword",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                children: "Password:"
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 57,
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "current-password",
+                                value: password,
+                                onChange: (e)=>setPassword(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 58,
+                                columnNumber: 9
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 56,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                        controlId: "formEmail",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                children: "Email:"
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 66,
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "current-email",
+                                value: email,
+                                onChange: (e)=>setEmail(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 67,
+                                columnNumber: 9
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 65,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                        controlId: "formBirthday",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                children: "Birthday:"
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 75,
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "date",
+                                value: birthday,
+                                onChange: (e)=>setBirthday(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 76,
+                                columnNumber: 9
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 74,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                        variant: "primary",
+                        type: "submit",
+                        children: "Sign Up"
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 83,
+                        columnNumber: 7
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 45,
+                columnNumber: 5
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/signup-view/signup-view.jsx",
         lineNumber: 38,
         columnNumber: 5
@@ -42715,7 +42739,7 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                         className: "justify-content-center ",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                src: "data:image/png;base64,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",
+                                src: "https://i0.wp.com/grademymovie.com/wp-content/uploads/2018/11/GMM.jpg?fit=240%2C240&ssl=1",
                                 alt: "Image",
                                 className: "profile-img"
                             }, void 0, false, {
@@ -42736,9 +42760,9 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                             children: [
                                                 " Welcome ",
                                                 username,
@@ -42748,31 +42772,31 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                                             fileName: "src/components/profile-view/profile-view.jsx",
                                             lineNumber: 129,
                                             columnNumber: 19
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                            fileName: "src/components/profile-view/profile-view.jsx",
+                                            lineNumber: 130,
+                                            columnNumber: 7
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
+                                            children: [
+                                                " ",
+                                                email
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/profile-view/profile-view.jsx",
+                                            lineNumber: 131,
+                                            columnNumber: 7
                                         }, undefined)
-                                    }, void 0, false, {
-                                        fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 129,
-                                        columnNumber: 7
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
-                                        children: [
-                                            " ",
-                                            email
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 130,
-                                        columnNumber: 7
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/profile-view/profile-view.jsx",
+                                    lineNumber: 129,
+                                    columnNumber: 7
+                                }, undefined)
+                            }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
                                 lineNumber: 128,
-                                columnNumber: 7
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                                fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 132,
                                 columnNumber: 7
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -42783,17 +42807,17 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                                         favoriteMovies: favoriteMovies
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 135,
+                                        lineNumber: 138,
                                         columnNumber: 7
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 134,
+                                    lineNumber: 137,
                                     columnNumber: 5
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 133,
+                                lineNumber: 136,
                                 columnNumber: 7
                             }, undefined)
                         ]
@@ -42814,7 +42838,7 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 147,
+                                lineNumber: 150,
                                 columnNumber: 5
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
@@ -42824,23 +42848,23 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                                     handleSubmit: handleSubmit
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 149,
+                                    lineNumber: 152,
                                     columnNumber: 5
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 148,
+                                lineNumber: 151,
                                 columnNumber: 5
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 155,
+                                lineNumber: 158,
                                 columnNumber: 3
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 146,
+                        lineNumber: 149,
                         columnNumber: 5
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -42849,7 +42873,7 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 162,
+                                        lineNumber: 165,
                                         columnNumber: 5
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42860,34 +42884,34 @@ const ProfileView = ({ token, movies, user, handleRemoveFromFavorites })=>{
                                         children: "Delete Account "
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 163,
+                                        lineNumber: 166,
                                         columnNumber: 5
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 168,
+                                        lineNumber: 171,
                                         columnNumber: 7
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 161,
+                                lineNumber: 164,
                                 columnNumber: 5
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 160,
+                            lineNumber: 163,
                             columnNumber: 5
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 158,
+                        lineNumber: 161,
                         columnNumber: 3
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 145,
+                lineNumber: 148,
                 columnNumber: 5
             }, undefined)
         ]
