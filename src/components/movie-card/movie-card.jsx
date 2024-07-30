@@ -1,30 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import "./movie-card.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
-export const MovieCard = ({movie, isFavorite}) => {
+export const MovieCard = ({movie, isFavorite, user, token, setUser}) => {
 
-const storedToken = localStorage.getItem("token");
-const storedUser = JSON.parse(localStorage.getItem("user"));
-//other storage 
-
-const [user, setUser] = useState(storedUser ? storedUser: {user: ""});
-const [token, setToken] = useState(storedToken ? storedToken: {token: ""});
-
-useEffect(()=> {
-  if (!user && storedUser) {
-    setUser(storedUser);
-  }
-}, [storedUser]);
-
-useEffect(() => {
-  if (!token && storedToken) {
-    setToken(storedToken);
-  }
-}, [storedToken]);
 
 //Add movies to favorites
   const handleAddToFavorites = () => {
@@ -46,7 +27,6 @@ useEffect(() => {
 
 
   const addToFavorites = ( ) => {
-    // const [favorites, setFavorites]([])
    
     fetch(`https://myflix-retro-af49f4e11172.herokuapp.com/users/${user.Username}/movies/${encodeURIComponent(movie.id)}`, 
     {
@@ -62,16 +42,16 @@ useEffect(() => {
         
       }
       alert("Movie added to Favorites!");
-      // window.location.reload();
       return response.json();
     })
 
-    //check if this is reachable
     .then((updatedUser) => {
       if (updatedUser) {
-      //  localStorage.setItem("user", JSON.stringify(updatedUser));
+       localStorage.setItem("user", JSON.stringify(updatedUser));
       setUser(updatedUser)}
-    }
+      // window.location.reload();
+  }      
+
   )
   
     .catch((error) => {
@@ -95,14 +75,14 @@ const removeFromFavorites = () => {
     throw new Error("Failed to remove movie from Favorites");
     }
     alert("Movie removes from Favorites List!");
-    // window.location.reload();
     return response.json();
   })
-  .then((user) => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-      setToken(user);
+  .then((updatedUser) => {
+    if (updatedUser) {
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      setUser(updatedUser);
+      // window.location.reload(); 
+
     }
   })
   .catch((error) => {
@@ -115,7 +95,7 @@ const removeFromFavorites = () => {
     <Card className="h-100 container-fluid">
       <Link className="link-card" to={`/movies/${encodeURIComponent(movie?.id)}`}>
      
-     <Card.Body className="movie-card-img"> 
+     <Card.Body className=" movie-card-img"> 
       <Card.Title>{movie?.title}</Card.Title>
       <Card.Text>{movie?.director}</Card.Text>
       

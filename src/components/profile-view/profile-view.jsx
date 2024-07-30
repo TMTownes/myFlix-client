@@ -10,7 +10,7 @@ import { FavoriteMovies } from "./favorite-movies";
 import "./profile-view.scss";
 // import "./favoriteMovies.scss";
 
-export const ProfileView = ({ token, movies, user, handleRemoveFromFavorites}) => {
+export const ProfileView = ({ token, movies, user}) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
@@ -23,13 +23,11 @@ export const ProfileView = ({ token, movies, user, handleRemoveFromFavorites}) =
     if (!user && storedUser) {
       setUser(storedUser);
     }
-  }, [storedUser]);
   
-  useEffect(() => {
     if (!token && storedToken) {
       setToken(storedToken);
     }
-  }, [storedToken]);
+  }, [storedUser, storedToken]);
 
 const favoriteMovies = user === undefined ? [] : movies.filter(m => user.FavoriteMovies.includes(m.id));
 
@@ -63,10 +61,10 @@ const handleSubmit = (event) => {
    alert("Update failed. Please try again.");  
   }
 })
-.then((user) => {
-  if (user) {
-  // localStorage.setItem("user", JSON.stringify(user));
-  setUser(user);
+.then((updatedUser) => {
+  if (updatedUser) {
+  localStorage.setItem("user", JSON.stringify(updatedUser));
+  setUser(updatedUser);
   }
 })
 .catch((error) => {
@@ -113,34 +111,41 @@ const handleDeleteAccount = () => {
 
 
 return (
-  <Container className="h-100 container-fluid">
+  <Container className="container-fluid">
   
-    <Card>
-      <Row className="justify-content-center ">
+    <Card >
+      <Row >
         <Col >
-        
+      <Card.Body>  
         <img src="https://i0.wp.com/grademymovie.com/wp-content/uploads/2018/11/GMM.jpg?fit=240%2C240&ssl=1" alt="Image"
         className="profile-img"/>
+
+      
+      <Card.Title><h2> Welcome {username}! </h2>
+      <span/>
+      <Card.Text> {email}</Card.Text>
+      </Card.Title>
+      </Card.Body>
         </Col>
       
       </Row>
+  </Card>
+  <Card >
+    <Card.Body>
+      <Row >
       <Col>
-      <Card.Body>
-      <Card.Title><h2> Welcome {username}! </h2>
-      <br/>
-      <Card.Text> {email}</Card.Text>
-      </Card.Title>
       
-      
-      </Card.Body>
-      <Card.Body>
-    <Row className="justify-content-center ">
-      <FavoriteMovies user={user} favoriteMovies={favoriteMovies} />
+     
+    
+      <FavoriteMovies 
+      user={user} 
+      favoriteMovies={favoriteMovies}/>
       {/* <Button variant="primary" onClick={handleRemoveFromFavorites}> Remove</Button> */}
-    </Row>
-      </Card.Body>
-      
+    
+   
       </Col>
+      </Row>
+      </Card.Body>
     </Card >
   
 
