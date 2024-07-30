@@ -9,16 +9,20 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
+// import { FavoriteMovies } from "../profile-view/favorite-movies";
+// import PropTypes from "prop-types";
+
 
 // import { useSelector, useDispatch } from "react-redux";
 // import { setMovies } from "../../redux/reducers/movies/movies";
 
 export const MainView = () => {
-  // const storedUser = JSON.parse(localStorage.getItem("user"));
-  // const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
+  // { favoriteMovies }
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser);
   // const user = useSelector((state) => state.user);
-  const [token, setToken] = useState(null);  
+  const [token, setToken] = useState(storedToken);  
   const [movies, setMovies] = useState([]);
   // const movies = useSelector((state) => state.movies);
   const [query, setQuery] = useState("");
@@ -94,7 +98,8 @@ export const MainView = () => {
   return (
     
   <Router>
-  <Row className="justify-content-md-center">
+  <Row>
+  {/* className="justify-content-md-center" */}
   {/* remove user prop for redux */}
     <NavigationBar
       handleSearch={handleSearch}
@@ -111,24 +116,43 @@ export const MainView = () => {
       
       <Route
       //Home Page
+      // className="container-fluid movies"
         path="/"
         element={
           <> 
           {user ? (
-           <Row className="justify-content-fluid">
+          <div className="container-fluid">
+            <h1 className="d-flex">Featured Movies</h1>
+           <Row className="d-flex flex-row flex-nowrap overflow-auto m-3">
+            {/* className="container-fluid movies" */}
             {movies.map((movie) => (
              
 
-              <Col className="mb-4" key={movie.id} sm={6} md={4} lg={3}>
-                <MovieCard
+              <Col  key={movie.id} sm={6} md={4} lg={3}>
+                {/* className="m-4"  */}
+                <div > 
+                  <MovieCard
                 //remove movie prop for redux?
                   movie={movie}
                   isFavorite={user && user.FavoriteMovies.includes(movie.id)}
+                  user={user}
+                  token={token}
+                  setUser={setUser}
                 />
+
+                </div>
+                
                 </Col>
               
               ))}
+              {/* <FavoriteMovies 
+                  user={user} 
+                  favoriteMovies={favoriteMovies}
+                  /> */}
             </Row> 
+            
+            </div>
+
             
             ) : (
               <Navigate to="/login" replace />
@@ -170,6 +194,7 @@ export const MainView = () => {
                 //remove user, token, and movie props for redux. Then update ProfileView
                   token={token}
                   user={user}
+                  setUser={setUser}
                   movies={movies}
                   onSubmit={(user) => setUser(user)}
                 />
@@ -217,3 +242,7 @@ export const MainView = () => {
 </Router>
   );
 };
+
+// MainView.propTypes = {
+//   favoriteMovies: PropTypes.array
+// };

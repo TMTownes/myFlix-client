@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Form } from "react-bootstrap";
-import { Row, Col, Figure } from "react-bootstrap";
+import { Button, Card, Title, Image, Form } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { setUser } from "../../redux/reducers/user/user"; for redux
 
@@ -49,18 +49,22 @@ export const LoginView = ({onLoggedIn}) => {
   };
 
   return (
-  <Row>
-    <Col>
-   <Figure className=" figure justify-content-center container">
-
-      <Figure.Caption className="figure-caption"><h2>Welcome to The Flix</h2></Figure.Caption>
-      <img className="figure-img img-fluid rounded shadow-3 mb-3" 
-      src="https://image.roku.com/developer_channels/prod/0b4220080e21631abbe1c40171297d06639440a20af80e02472cd4ebe23ed512.png"
-      alt="Arcade" />
+  <Row >
+    <Col md={12}>
+    {/* className="justify-content-center container" */}
+    <Card className="mb-3">
+      {/* className="mb-5 signup" */}
+      <Card.Title ><h2>Welcome to The Flix</h2></Card.Title>
+        <Card.Body>
+          
+          <Image className="card-img-top"
+          // "img-fluid rounded shadow-3 mb-3" 
+          src="https://image.roku.com/developer_channels/prod/0b4220080e21631abbe1c40171297d06639440a20af80e02472cd4ebe23ed512.png"
+          alt="Arcade" 
+          fluid
+          />
+        </Card.Body>
       
-  
-    
-    
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username: </Form.Label>
@@ -83,9 +87,9 @@ export const LoginView = ({onLoggedIn}) => {
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
     </Form>
-    </Figure>
+    </Card>
     </Col>
-    </Row>
+  </Row>
   );
 };
 
