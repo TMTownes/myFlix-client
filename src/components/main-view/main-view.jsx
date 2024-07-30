@@ -29,8 +29,10 @@ export const MainView = () => {
   // const dispatch = useDispatch();
 
   // const [isDirectNavigation, setIsDirectNavigation] = useState(false);
-  
-  // const { movieId } = useParams();
+
+
+  // const favoriteMovies = user && movies.length > 0 ? movies.filter(movie => user.FavoriteMovies.includes(movie._id)) : [];
+
 
   useEffect(() => {
     if (!token) {
@@ -196,9 +198,12 @@ export const MainView = () => {
                   user={user}
                   setUser={setUser}
                   movies={movies}
+                  // favoriteMovies={favoriteMovies}
                   onSubmit={(user) => setUser(user)}
                 />
+                
               </Col>
+              
             </Row>
           ) : (
             <Navigate to="/login" replace />

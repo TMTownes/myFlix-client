@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import "./movie-card.scss";
 import { Link } from "react-router-dom";
+// import { FavoriteMovies } from "../profile-view/favorite-movies";
 
-export const MovieCard = ({movie, isFavorite, user, token, setUser}) => {
+export const MovieCard = ({movie, user, token, setUser, isFavorite }) => {
 
 
 //Add movies to favorites
@@ -111,8 +112,13 @@ const removeFromFavorites = () => {
           <Button variant="primary" type="button" className="btn btn-outline-info" onClick={handleAddToFavorites}> 
           Add </Button>
         )}
-       
         </Card.Body>
+        {/* <FavoriteMovies
+        movie={movie}
+        user={user}
+        token={token}
+        setUser={setUser}
+        /> */}
          
   </Card>
   );
@@ -127,5 +133,6 @@ MovieCard.propTypes = {
       director: PropTypes.string,
       description: PropTypes.string
     
-    }).isRequired   
+    }).isRequired,
+    setUser: PropTypes.object   
 };
