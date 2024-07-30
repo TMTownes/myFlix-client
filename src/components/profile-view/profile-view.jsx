@@ -1,44 +1,46 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Container } from "react-bootstrap";
-import { useState } from "react";
+// import { useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import "./profile-view.scss";
 // import "./favoriteMovies.scss";
 
-export const ProfileView = ({ token, movies, user}) => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
+export const ProfileView = ({ token, movies, user, setUser }) => {
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
+  // const storedToken = localStorage.getItem("token");
 
-  const [username, setUsername] = useState(storedUser.Username);
-  const [email, setEmail] = useState(storedUser.Email);
-  const [birthdate, setBirthdate] = useState(storedUser.Birthdate);
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState(storedUser.Username);
+  // const [email, setEmail] = useState(storedUser.Email);
+  // const [birthdate, setBirthdate] = useState(storedUser.Birthdate);
+  // const [password, setPassword] = useState("");
  
-  useEffect(()=> {
-    if (!user && storedUser) {
-      setUser(storedUser);
-    }
+  // useEffect(()=> {
+  //   if (!user && storedUser) {
+  //     setUser(storedUser);
+  //   }
   
-    if (!token && storedToken) {
-      setToken(storedToken);
-    }
-  }, [storedUser, storedToken]);
+  //   if (!token && storedToken) {
+  //     setToken(storedToken);
+  //   }
+  // }, [storedUser, storedToken]);
 
-const favoriteMovies = user === undefined ? [] : movies.filter(m => user.FavoriteMovies.includes(m.id));
+const favoriteMovies = user ? movies.filter(m => user.FavoriteMovies.includes(m.id)) : [];
+
+// console.log("Reading favoriteMovies", user.FavoriteMovies);
 
 const formData = {
-  Username: username,
-  Email: email,
-  Birthdate: birthdate,
-  Password: password
+  Username: user.username,
+  Email: user.email,
+  Birthdate: user.birthdate,
+  Password: user.password
 };
 
-formData.Birthdate = birthdate ? new Date(birthdate).toISOString().substring(0, 10) : "";
+formData.Birthdate = user.birthdate ? new Date(birthdate).toISOString().substring(0, 10) : "";
 
 const handleSubmit = (event) => {
   event.preventDefault(event);
@@ -121,9 +123,9 @@ return (
         className="profile-img"/>
 
       
-      <Card.Title><h2> Welcome {username}! </h2>
+      <Card.Title><h2> Welcome {user.Username}! </h2>
       <span/>
-      <Card.Text> {email}</Card.Text>
+      <Card.Text> {user.Email}</Card.Text>
       </Card.Title>
       </Card.Body>
         </Col>
@@ -139,7 +141,10 @@ return (
     
       <FavoriteMovies 
       user={user} 
-      favoriteMovies={favoriteMovies}/>
+      token={token}
+      setUser={setUser}
+      favoriteMovies={favoriteMovies}
+      />
       {/* <Button variant="primary" onClick={handleRemoveFromFavorites}> Remove</Button> */}
     
    
@@ -186,7 +191,9 @@ ProfileView.propTypes = {
   movies: PropTypes.array.isRequired,
   user: PropTypes.object,
   token: PropTypes.string.isRequired,
-  handleRemoveFromFavorites: PropTypes.func
+  setUser: PropTypes.object.isRequired,
+  favoriteMovies: PropTypes.array
+  // handleRemoveFromFavorites: PropTypes.func
 };
 
 
